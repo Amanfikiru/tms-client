@@ -2,6 +2,7 @@ import { Temporal } from "@js-temporal/polyfill";
 import { Student, isStudent } from "./models/student.model"; 
 import { parseStudent } from "./models/student.model"; 
 import { AssessmentItem, calculateGrade } from "./models/assessment.model"; 
+import { EnrollmentStatus,  describeEnrollment } from "./models/enrollment.model";
 
 const student: Student = { 
 id: "STU-001", 
@@ -34,22 +35,14 @@ console.log(parseStudent({ id: "STU-001", name: "Hana" }));
 
 
  
-const quiz: AssessmentItem = { 
-  id: "QUIZ-001", 
-  kind: "quiz", 
-title: "SQL Basics", 
-correctAnswers: 8, 
-totalQuestions: 10, 
-}; 
-const lab: AssessmentItem = { 
-id: "LAB-001", 
-kind: "lab", 
-title: "REST API Project", 
-functionalityScore: 85, 
-codeQualityScore: 90, 
-}; 
+const quiz: AssessmentItem = { id: "QUIZ-001",   kind: "quiz", title: "SQL Basics", correctAnswers: 8, totalQuestions: 10, }; 
+const lab: AssessmentItem = { id: "LAB-001", kind: "lab", title: "REST API Project", functionalityScore: 85, codeQualityScore: 90, }; 
 console.log(`Quiz grade: ${calculateGrade(quiz)}%`); // 80 
 console.log(`Lab grade: ${calculateGrade(lab)}%`); // 87 
 // Verify readonly  try this line and check the compiler error: 
-quiz.id = "QUIZ-999"; 
+//quiz.id = "QUIZ-999"; 
 // ERROR: Cannot assign to 'id' because it is a read-only property
+
+const pending: EnrollmentStatus = { status: "PENDING",   requestedAt: Temporal.Now.instant(),   studentId: "STU-001",   courseId: "CRS-101",}; 
+console.log(describeEnrollment(pending)); 
+// Awaiting approval since 2026-05-08T... 
