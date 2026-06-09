@@ -12,5 +12,14 @@
   "dependencies": {
     "@js-temporal/polyfill": "^0.5.1",
     "typescript": "^6.0.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amanfikiru/tms-client.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Amanfikiru/tms-client/issues"
+  },
+  "homepage": "https://github.com/Amanfikiru/tms-client#readme"
 }
